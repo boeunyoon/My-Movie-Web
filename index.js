@@ -8,9 +8,9 @@ const { User } = require("./models/Users");
 app.use(bodyParser.urlencoded({extended: true}));
 //application/json
 app.use(bodyParser.json());
-
+const config = require('./config/key');
 const mongoose = require('mongoose')
-const connect = mongoose.connect('mongodb+srv://yboeun:dbsqhdms00@cluster0.9ocle.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+const connect = mongoose.connect(config.mongoURI,
     {
       useNewUrlParser: true, useUnifiedTopology: true
       //useCreateIndex: true, useFindAndModify: false
