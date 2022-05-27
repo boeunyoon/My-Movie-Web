@@ -26,12 +26,13 @@ app.post('/register', (req, res) => {
   //그것들을 데이터베이스에 넣어준다
 
   const user = new User(req.body)
+
   user.save((err, doc) => {
-    if(err) return req.json({success: false, err})
+    if (err) return res.json({ success: false, err });
     return res.status(200).json({
-      success: true
-    })
-  })
+        success: true
+    });
+});
 })
 
 app.listen(port, () => {
