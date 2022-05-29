@@ -3,14 +3,14 @@ const app = express()
 const port = 8080
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
-const { User } = require("./models/Users");
-const { auth } = require("./middleware/auth")
+const { User } = require("./server/models/Users");
+const { auth } = require("./server/middleware/auth")
 //application/x-www--form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
-const config = require('./config/key');
+const config = require('./server/config/key');
 const mongoose = require('mongoose');
 const res = require('express/lib/response');
 const connect = mongoose.connect(config.mongoURI,
@@ -21,7 +21,7 @@ const connect = mongoose.connect(config.mongoURI,
       .catch(err => console.log(err))
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! HI')
 })
 
 app.post('/register', (req, res) => {
